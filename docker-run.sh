@@ -30,9 +30,10 @@ if [ "$OAUTH_ADDITIONAL_PARAMS" != "**None**" ]; then
     replace_in_index "additionalQueryStringParams: {}" "additionalQueryStringParams: {$OAUTH_ADDITIONAL_PARAMS}"
 fi
 
-if [[ -f $SWAGGER_PATH ]]; then
-  cp $SWAGGER_JSON/*.yaml $NGINX_ROOT
-  REL_PATH="/$(basename $SWAGGER_PATH)/baobab.yaml"
+if [[ -d $SWAGGER_PATH ]]; then
+  cp $SWAGGER_PATH/*.yaml $NGINX_ROOT
+  SWAGGER_JSON="$SWAGGER_PATH/baobab.yaml"
+  REL_PATH="/$(basename $SWAGGER_JSON)"
   sed -i "s|http://petstore.swagger.io/v2/swagger.json|$REL_PATH|g" $INDEX_FILE
   sed -i "s|http://example.com/api|$REL_PATH|g" $INDEX_FILE
 else

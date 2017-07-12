@@ -11,7 +11,7 @@ ENV OAUTH_CLIENT_SECRET "**None**"
 ENV OAUTH_REALM "**None**"
 ENV OAUTH_APP_NAME "**None**"
 ENV OAUTH_ADDITIONAL_PARAMS "**None**"
-ENV SWAGGER_JSON "/app/swagger.json"
+ENV SWAGGER_PATH "/app"
 ENV PORT 80
 
 RUN apk add --update nginx
